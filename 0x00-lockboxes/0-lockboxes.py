@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""
+'''
 You have n number of locked boxes
 Each box is numbered sequentially from 0 to n - 1
 and each box may contain keys to the other boxes.
@@ -10,7 +10,7 @@ and each box may contain keys to the other boxes.
 * You can assume all keys will be positive integers
 * There can be keys that do not have boxes
 * The first box boxes[0] is unlocked
-"""
+'''
 
 
 def canUnlockAll(boxes):
