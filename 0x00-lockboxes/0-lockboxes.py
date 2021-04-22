@@ -14,9 +14,10 @@ and each box may contain keys to the other boxes.
 
 
 def canUnlockAll(boxes):
-	""" Method that determines if all the boxes can be opened.
-	Return True if all boxes can be opened, else return False"""
-
+    '''
+    Method that determines if all the boxes can be opened.
+    Return True if all boxes can be opened, else return False
+    '''
     key_list = [0]
     for x in key_list:
         for box in boxes[x]:
