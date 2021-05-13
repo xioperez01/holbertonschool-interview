@@ -5,7 +5,10 @@ python Module
 
 
 def minOperations(n):
-    '''Calculates the fewest number of operations needed to result in exactly n H characters'''
+    '''
+    Calculates the fewest number of operations needed to result in exactly
+    n H characters
+    '''
     operations = 0
     min_operations = 2
 
