@@ -14,6 +14,8 @@ int check_cycle(listint_t *list)
 	if (!list || !list->next || !list->next->next)
 		return (0);
 
+	tmp = tmp->next;
+
 	while (tmp != NULL)
 	{
 		if (tmp->next == list)
