@@ -2,7 +2,7 @@
 
 :open_file_folder: _Specializations > Interview Preparation > Algorithms_
 
-:pushpin:  **c** **Recursion**
+:pushpin:  **c**
 
 ## Task
 

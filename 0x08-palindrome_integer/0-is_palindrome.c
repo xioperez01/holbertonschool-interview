@@ -1,30 +1,6 @@
 #include "palindrome.h"
 
 /**
- * is_palindrome_rec - Checks if an unsigned integer is a palindrome
- * @n: Is the number to be checked
- * @factor: Factor that takes the first digit
- * Return: 1 if n is a palindrome, and 0 otherwise
-*/
-
-int is_palindrome_rec(int n, int factor)
-{
-	int right = n % 10;
-	int left = n / factor;
-
-	if (n >= 0 && n <= 9)
-		return (1);
-
-	if (right != left)
-		return (0);
-
-	n %= factor;
-	n /= 10;
-	factor /= 100;
-	return (is_palindrome_rec(n, factor));
-}
-
-/**
  * is_palindrome - Function that checks if an unsigned integer is a palindrome
  * @n: Is the number to be checked
  * Return: 1 if n is a palindrome, and 0 otherwise
@@ -32,21 +8,21 @@ int is_palindrome_rec(int n, int factor)
 
 int is_palindrome(unsigned long n)
 {
-	int counter = -1;
-	unsigned long number = n;
-	int factor = 10;
+	unsigned long number = n, rev = 0;
+	int digit;
 
-	while ((number / 10) > 0)
+	if (n < 10)
+		return (1);
+
+	while (n > 0)
 	{
-		number = number / 10;
-		counter++;
+		digit = n % 10;
+		rev = rev * 10 + digit;
+		n /= 10;
 	}
 
-	while (counter > 0)
-	{
-		factor *= 10;
-		counter--;
-	}
-
-	return (is_palindrome_rec(n, factor));
+	if (number == rev)
+		return (1);
+	else
+		return (0);
 }
