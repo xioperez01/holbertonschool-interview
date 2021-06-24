@@ -28,4 +28,3 @@ def validUTF8(data):
         index -= 1
 
     return index == 0
-
