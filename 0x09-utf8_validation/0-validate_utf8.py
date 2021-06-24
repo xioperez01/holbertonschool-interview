@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-'''
-Python Module
-'''
+''' Python Module '''
 
 
 def validUTF8(data):
