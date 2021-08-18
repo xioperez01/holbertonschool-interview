@@ -40,6 +40,10 @@ Visual representation of the walls **[0, 1, 0, 2, 0, 3, 0, 4]**
 
 ![Visual representation of the walls [0, 1, 0, 2, 0, 3, 0, 4]](1.png)
 
+Visual representation of the walls **[2, 0, 0, 4, 0, 0, 1, 0]**
+
+![Visual representation of the walls [2, 0, 0, 4, 0, 0, 1, 0]](2.png)
+
 ## Environment
 
 - Allowed editors: vi, vim, emacs
