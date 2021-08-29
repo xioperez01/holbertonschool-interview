@@ -1,92 +1,75 @@
+
 #include "sort.h"
 
 /**
- * heap_sort - sift-down heap sort algorithm
- *
- * @array: array to be sorted
- * @size: size of array to be sorted
- *
+ * swap - swaped 2 values.
+ * @array: the array for swap him values.
+ * @i: First index
+ * @j: Second index
+ * @r_size: The size constant for print
+ * Return: void
+ */
+void swap(int *array, int i, int j, const int r_size)
+{
+	int tmp;
+	(void)r_size;
+
+	if (i != j)
+	{
+		tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+		print_array(array, (size_t)r_size);
+	}
+}
+
+/**
+ * large - Largest number btween the layers
+ * @array: Array to sort
+ * @size: Menor element
+ * @i: Largest. element
+ * @r_size: The size for print in swap
+ * Return: void
+ */
+void large(int *array, size_t size, int i, const int r_size)
+{
+	int largest = i;
+	int lft = (2 * i) + 1;
+	int rgt = (2 * i) + 2;
+
+	if (lft < (int)size && array[lft] > array[largest])
+		largest = lft;
+
+	if (rgt < (int)size && array[rgt] > array[largest])
+		largest = rgt;
+
+	if (largest != i)
+	{
+		swap(array, i, largest, r_size);
+		large(array, size, largest, r_size);
+	}
+}
+
+/**
+ * heap_sort - sorts an array of integers using Heap sort algorithm
+ * @array: Array to sort
+ * @size: Size of the array
+ * Return: void
  */
 void heap_sort(int *array, size_t size)
 {
-	size_t last;
+	const int r_size = (const int)size;
+	int i;
 
-	if (!array || size < 2)
+	if (size < 2 || !array)
 		return;
 
-	sort(array, size);
+	for (i = size / 2 - 1; i >= 0; i--)
+		large(array, size, i, r_size);
 
-	for (last = size; last > 1;)
+	for (i = size - 1; i >= 0; i--)
 	{
-		swap(array, size, &array[0], &array[last - 1]);
-		sift_down(array, 0, --last, size);
+		swap(array, 0, i, r_size);
+		large(array, i, 0, r_size);
 	}
 }
-
-/**
- * swap - to swap two integers
- * @array: array to be sorted
- * @size: the size of the array to be sorted
- * @first: pointer of the first integer
- * @second: pointer of the second integer
- *
- */
-void swap(int *array, size_t size, int *first, int *second)
-{
-	int temp;
-
-	if (*first != *second)
-	{
-		temp = *first;
-		*first = *second;
-		*second = temp;
-	}
-
-	print_array((const int *)array, size);
-}
-
-/**
- * sift_down - heap sort shift down
- *
- * @array: the array to be sorted
- * @first: first element of the array
- * @last: last element of the array
- * @size: size of array
- *
- */
-void sift_down(int *array, size_t first, size_t last, size_t size)
-{
-	size_t root = first, swp;
-
-	swp = root;
-	for (; left_ch(root) < last; root = swp)
-	{
-		swp = root;
-
-		if (array[left_ch(root)] > array[root])
-			swp = left_ch(root);
-
-		if (right_ch(root) < last &&
-		    array[right_ch(root)] > array[swp])
-			swp = right_ch(root);
-
-		if (swp == root)
-			break;
-
-		swap(array, size, &array[root], &array[swp]);
-	}
-}
-
-/**
- * sort - heap sort in place
- *
- * @array: the array to be sorted
- * @size: size of the array
- *
- */
-void sort(int *array, size_t size)
-{
-	ssize_t first;
-
-	for (first = parent(size - 1); first >= 0; first--)
-		sift_down(array, first, size, size);
