@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-''' 0-pascal_triangle'''
+""" 0-pascal_triangle """
 
 
 def pascal_triangle(n):
-    '''Returns a Pascal's triangle'''
+    """ Returns a Pascal's triangle """
     triangle = []
     for number in range(n):
         row = []
